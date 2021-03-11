@@ -14,11 +14,8 @@ function newItem(){
     $('#list').append(li);
   }
 //2. Crossing an item out:
-  function crossOut() {
-		li.toggleClass("strike");
-	}
 
-	li.on("dblclick", function crossOut() {
+	li.on("dblclick", function() {
 		li.toggleClass("strike");
 	});
 //3. Adding a delete button
@@ -26,10 +23,14 @@ function newItem(){
   crossOutButton.append(document.createTextNode('X'));
   li.append(crossOutButton);
 
-   crossOutButton.on("click", deleteListItem);
-   function deleteListItem(){
- 		li.addClass("delete")
- 	}
+
+    crossOutButton.on("click", function(){
+        
+        $(this).parent().remove();
+    })
+    
+    
+// 	}
     $('#list').sortable();
 
 
